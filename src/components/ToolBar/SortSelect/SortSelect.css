@@ -1,0 +1,28 @@
+.sort-select{
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    position: relative;
+}
+
+.sort-select__label{
+    color: rgba(139, 142, 152)
+}
+
+.sort-select__select{
+    appearance: none;
+    padding: .5rem 2.5rem .5rem 1rem;
+    border-radius: .5rem;
+    border: 2px solid rgba(236, 236, 239);
+    cursor: pointer;
+}
+
+.sort-select__icon{
+    position: absolute;
+    right: 0rem;
+    pointer-events: none;
+    padding-right: .75rem;
+    font-size: .75rem;
+
+    color: rgba(0,0,0);
+}

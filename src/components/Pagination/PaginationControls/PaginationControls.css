@@ -1,0 +1,19 @@
+.pagination-controls{
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.pagination-controls__button{
+    padding: .5rem;
+    border-radius: .5rem;
+    border: 2px solid rgba(236, 236, 239);
+    cursor: pointer;
+}
+
+.pagination-controls__page-number{
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    border: 2px solid rgba(236, 236, 239);
+    cursor: pointer;
+}

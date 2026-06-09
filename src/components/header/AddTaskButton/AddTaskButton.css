@@ -1,0 +1,30 @@
+.add-task-button{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: .75rem;
+    padding: 0 .75rem;
+    margin: 0 3rem;
+    border-radius: .5rem;
+    background-color: rgba(101, 100, 229);
+    border: none;
+
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.add-task-button__icon{
+    color: rgb(255, 255, 255);
+}
+
+.add-task-button__text{
+    margin: .75rem 0;
+    font-weight: 500;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+}
+
+.add-task-button:hover {
+    box-shadow: 0 .25rem .75rem rgba(101, 100, 229, 0.25);
+    transform: translateY(-1px);
+    cursor: pointer;
+}

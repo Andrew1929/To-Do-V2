@@ -1,0 +1,9 @@
+.tool-bar{
+    font-family : "Inter";
+    display : flex;
+    align-items : center;
+    justify-content : space-between;
+    width: 90%;
+    margin: 0 auto 1.5rem auto;
+    padding: 0 .75rem;
+}

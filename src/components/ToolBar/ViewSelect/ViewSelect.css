@@ -1,0 +1,28 @@
+.view-select{
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    position: relative;
+}
+
+.view-select__label{
+    color: rgba(139, 142, 152)
+}
+
+.view-select__select{
+    padding: .5rem 2.5rem .5rem 1rem;
+    border-radius: .5rem;
+    border: 2px solid rgba(236, 236, 239);
+    cursor: pointer;
+    appearance: none;
+}
+
+.view-select__icon{
+    position: absolute;
+    right: 0rem;
+    pointer-events: none;
+    padding-right: .75rem;
+    font-size: .75rem;
+
+    color: rgba(0,0,0);
+}

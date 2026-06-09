@@ -1,0 +1,86 @@
+.task{
+    display: flex;
+    align-items: center;
+    padding: .25rem .75rem;
+    margin: 0 auto;
+    gap: 1rem;
+    border-bottom: .2rem solid  rgba(236, 236, 239);
+    font-family: "Inter";
+}
+
+.task:last-child {
+    border-bottom: none;
+}
+
+.task__checkbox{
+    width: 1.25rem;
+    height: 1.25rem;
+    border: .1rem solid rgb(146, 150, 161);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.task__checkbox:checked {
+    background-color: rgba(101, 100, 229);;
+    border-color: rgba(101, 100, 229);;
+}
+
+.task__title--completed {
+    text-decoration: line-through;
+    color: rgb(146, 150, 161);
+}
+
+.task__user{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+.task__user-icon{
+    font-size: 1.25rem;
+}
+
+.task__user-icon--green {
+    color: green;
+}
+
+.task__user-icon--blue {
+    color: blue;
+}
+
+.task__user-icon--yellow {
+    color: yellow;
+}
+
+.task__user-icon--purple {
+    color: purple;
+}
+
+.task__user-icon--black {
+    color: black;
+}
+
+.task__user-icon--orange {
+    color: orange;
+}
+
+.task__user-icon--red {
+    color: red;
+}
+
+.task__user-icon--pink {
+    color: pink;
+}
+
+.task__user-icon--cyan {
+    color: cyan;
+}
+
+.task__user-icon--brown {
+    color: brown;
+}
+
+.task__user-icon--gray {
+    color: gray;
+}

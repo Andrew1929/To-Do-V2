@@ -1,0 +1,32 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+
+    width: 90%;
+    margin: 1.5rem auto;
+    padding: .75rem;
+
+    border: .2rem solid rgba(236, 236, 239);
+    border-radius: .5rem;
+
+    gap: .75rem;
+    cursor: text;
+}
+
+.search-bar__icon {
+    font-size: 1rem;
+    color: rgba(146, 150, 161);
+    flex-shrink: 0;
+}
+
+.search-bar__input {
+    flex: 1;
+
+    border: 0;
+    outline: 0;
+
+    font: "Inter";
+    color: rgba(146, 150, 161);
+
+    background: transparent;
+}
