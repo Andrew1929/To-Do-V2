@@ -1,6 +1,9 @@
-import { useEffect, useState } from 'react';
-import type { Task } from './types/task.types';
-import { getTasks } from './api/tasks.api';
+import {  useState } from 'react';
+
+import { useTasks } from './hooks/useTasks';
+import { useSearch } from './hooks/useSearch';
+import { useSort } from './hooks/useSort';
+import { usePagination } from './hooks/usePagination';
 
 import { Header } from './components/header/Header';
 import { SearchBar } from './components/SearchBar/SearchBar';
@@ -8,36 +11,58 @@ import { ToolBar } from './components/ToolBar/ToolBar';
 import { TaskList } from './components/TaskList/TaskList';
 import { Pagination } from './components/Pagination/Pagination';
 
-
-
 function App() {
-  const [tasks, setTasks] = useState<Task []>([])
+  const {tasks} = useTasks();
+
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  useEffect(() => {
-    async function loadTasks() {
-      try {
-        const data = await getTasks("https://jsonplaceholder.typicode.com/todos")
-        setTasks(data)   
-      } catch (error) {
-        console.error(error)
-      }
-    }
+  const filteredTasks = useSearch(tasks, searchQuery);
 
-    loadTasks();
-  }, []);
-
-  const filteredTasks = tasks.filter((task) => {
-    return task.title.toLowerCase().includes(searchQuery.toLowerCase());
-  });
+  const {
+    sortBy, 
+    setSortBy, 
+    viewFilteredTasks, 
+    viewBy, 
+    setViewBy
+  } = useSort(filteredTasks);
+  
+  const {
+    totalPages, 
+    handlePageChange, 
+    getCurrentPageTasks , 
+    currentPage, 
+    setRowPerPage ,
+    rowPerPage
+  } = usePagination(viewFilteredTasks);
 
   return (
     <div className='app-container'>
-      <Header tasks={filteredTasks} />
-      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <ToolBar/>
-      <TaskList tasks={filteredTasks} />
-      <Pagination/>
+      <Header 
+        tasks={viewFilteredTasks} 
+      />
+
+      <SearchBar 
+        searchQuery={searchQuery} 
+        setSearchQuery={setSearchQuery} 
+      />
+
+      <ToolBar 
+        sortBy={sortBy} 
+        setSortBy={setSortBy} 
+        viewBy={viewBy} 
+        setViewBy={setViewBy}
+      />
+
+      <TaskList 
+        tasks={getCurrentPageTasks(currentPage, rowPerPage)} 
+      />
+
+      <Pagination  
+        setRowPerPage={setRowPerPage} 
+        currentPage={currentPage}
+        handlePageChange={handlePageChange} 
+        totalPages={totalPages} 
+      />
     </div>
   )
 }

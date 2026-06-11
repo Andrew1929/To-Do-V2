@@ -8,12 +8,26 @@
     padding: .5rem;
     border-radius: .5rem;
     border: 2px solid rgba(236, 236, 239);
+    background-color: white;
     cursor: pointer;
 }
 
-.pagination-controls__page-number{
-    padding: .5rem 1rem;
+.pagination-controls__button--disabled{
+    cursor: not-allowed;
+    opacity: .5;
+    background-color: rgba(0, 0, 0, 0.05);
+    filter: grayscale(1);
+}
+
+.pagination-controls__button-page{
+    padding: .5rem .75rem;
     border-radius: .5rem;
     border: 2px solid rgba(236, 236, 239);
+    background-color: white;
     cursor: pointer;
+}
+
+.pagination-controls__button-page--active{
+    color: rgba(90, 90, 224);
+    background-color: rgba(238, 237, 251);
 }

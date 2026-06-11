@@ -1,17 +1,25 @@
-import type { JSX } from 'react';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import './ViewSelect.css';
 
-export function ViewSelect() : JSX.Element {
+interface ViewSelectProps {
+    viewBy: string;
+    setViewBy: (viewBy: string) => void;
+}
+
+export function ViewSelect({ viewBy, setViewBy }: ViewSelectProps) {
     return (
         <div className="view-select">
             <p className="view-select__label">View:</p>
             
-            <select className="view-select__select">
-                <option value="all">All</option>
-                <option value="completed">Completed</option>
+            <select 
+                className="view-select__select" 
+                value={viewBy} 
+                onChange={(e) => setViewBy(e.target.value)}
+            >
+                <option value="All">All</option>
+                <option value="Completed">Completed</option>
+                <option value="Uncompleted">Uncompleted</option>
             </select>
 
             <FontAwesomeIcon className='view-select__icon' icon={faChevronDown} />

@@ -1,14 +1,19 @@
-import type { JSX } from "react";
 import { PageSizeSelect } from "./PageSizeSelect/PageSizeSelect";
 import { PaginationControls } from "./PaginationControls/PaginationControls";
-
 import "./Pagination.css";
 
-export function Pagination () :JSX.Element {
+interface PaginationProps {
+    setRowPerPage: (rowPerPage: number | null) => void;
+    currentPage: number;
+    handlePageChange: (currentPage: number) => void;
+    totalPages: number;
+}
+
+export function Pagination ( { setRowPerPage, currentPage, handlePageChange, totalPages }: PaginationProps) {
     return (
         <div className="pagination">
-            <PageSizeSelect />
-            <PaginationControls />
+            <PageSizeSelect handlePageChange={handlePageChange} setRowPerPage={setRowPerPage} />
+            <PaginationControls currentPage={currentPage} setCurrentPage={handlePageChange} totalPages={totalPages} />
         </div>
     )
 }
