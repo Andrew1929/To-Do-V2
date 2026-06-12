@@ -1,4 +1,3 @@
-import { type JSX } from "react";
 import type { Task } from "../../../types/task.types";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,7 +8,7 @@ type Props = {
     task: Task
 }
 
-export function Task ({task}: Props) :JSX.Element {
+export function Task ({task}: Props) {
 
     const getUser = (userId: number) : string => {
         switch (userId) {

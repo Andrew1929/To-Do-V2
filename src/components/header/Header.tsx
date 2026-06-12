@@ -1,4 +1,3 @@
-import type { JSX } from "react"
 import type { Task } from "../../types/task.types"
 
 import {TaskInfo} from "./TaskInfo/TaskInfo"
@@ -10,7 +9,7 @@ type Props = {
     tasks: Task []
 }
 
-export function Header ({ tasks }: Props) :JSX.Element {
+export function Header ({ tasks }: Props) {
     return (
         <header className="header">
             <Logo/>

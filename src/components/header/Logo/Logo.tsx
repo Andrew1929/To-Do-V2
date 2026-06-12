@@ -1,10 +1,9 @@
-import type { JSX } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareCheck} from "@fortawesome/free-solid-svg-icons";
 import "./Logo.css";
 
 
-export function Logo () :JSX.Element {
+export function Logo () {
     return (
         <div className="logo">
             <FontAwesomeIcon className="logo__icon" icon={faSquareCheck} />

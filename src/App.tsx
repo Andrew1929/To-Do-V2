@@ -2,7 +2,7 @@ import {  useState } from 'react';
 
 import { useTasks } from './hooks/useTasks';
 import { useSearch } from './hooks/useSearch';
-import { useSort } from './hooks/useSort';
+import { useTaskFilters } from './hooks/useTaskFilters';
 import { usePagination } from './hooks/usePagination';
 
 import { Header } from './components/header/Header';
@@ -10,9 +10,12 @@ import { SearchBar } from './components/SearchBar/SearchBar';
 import { ToolBar } from './components/ToolBar/ToolBar';
 import { TaskList } from './components/TaskList/TaskList';
 import { Pagination } from './components/Pagination/Pagination';
+import { ErrorView } from './components/ErrorView/ErrorView';
+import { LoadingView } from './components/LoaadingView/LoadingView';
 
 function App() {
-  const {tasks} = useTasks();
+
+  const {tasks , error, loading} = useTasks();
 
   const [searchQuery, setSearchQuery] = useState<string>("");
 
@@ -24,7 +27,7 @@ function App() {
     viewFilteredTasks, 
     viewBy, 
     setViewBy
-  } = useSort(filteredTasks);
+  } = useTaskFilters(filteredTasks);
   
   const {
     totalPages, 
@@ -35,36 +38,58 @@ function App() {
     rowPerPage
   } = usePagination(viewFilteredTasks);
 
-  return (
-    <div className='app-container'>
-      <Header 
-        tasks={viewFilteredTasks} 
-      />
+  if(error === true) {
+    return (
+      <div className='app-container--error'>
+        <Header 
+          tasks={viewFilteredTasks} 
+        />
 
-      <SearchBar 
-        searchQuery={searchQuery} 
-        setSearchQuery={setSearchQuery} 
-      />
+        <ErrorView/>
+      </div>
+    )
+  } else if (loading === true) {
+    return (
+      <div className='app-container--loading'>
+        <Header 
+          tasks={viewFilteredTasks} 
+        />
 
-      <ToolBar 
-        sortBy={sortBy} 
-        setSortBy={setSortBy} 
-        viewBy={viewBy} 
-        setViewBy={setViewBy}
-      />
+        <LoadingView/>
+      </div>
+    )
+  } else {
+    return (
+      <div className='app-container'>
+        <Header 
+          tasks={viewFilteredTasks} 
+        />
 
-      <TaskList 
-        tasks={getCurrentPageTasks(currentPage, rowPerPage)} 
-      />
+        <SearchBar 
+          searchQuery={searchQuery} 
+          setSearchQuery={setSearchQuery} 
+        />
 
-      <Pagination  
-        setRowPerPage={setRowPerPage} 
-        currentPage={currentPage}
-        handlePageChange={handlePageChange} 
-        totalPages={totalPages} 
-      />
-    </div>
-  )
+        <ToolBar 
+          sortBy={sortBy} 
+          setSortBy={setSortBy} 
+          viewBy={viewBy} 
+          setViewBy={setViewBy}
+        />
+
+        <TaskList 
+          tasks={getCurrentPageTasks(currentPage, rowPerPage)} 
+        />
+
+        <Pagination  
+          setRowPerPage={setRowPerPage} 
+          currentPage={currentPage}
+          handlePageChange={handlePageChange} 
+          totalPages={totalPages} 
+        />
+      </div>
+    )
+  }
 }
 
 export default App

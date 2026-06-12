@@ -4,7 +4,7 @@ import "./PaginationControls.css";
 
 interface PaginationControlsProps {
     currentPage: number;
-    setCurrentPage: (currentPage: number) => void;
+    handlePageChange: (currentPage: number) => void;
     totalPages: number;
 }
 
@@ -21,12 +21,12 @@ const getPages = (currentPage: number, totalPages: number) : number[] => {
     return pages;
 }
 
-export function PaginationControls ({ currentPage, setCurrentPage, totalPages }: PaginationControlsProps) {
+export function PaginationControls ({ currentPage, handlePageChange, totalPages }: PaginationControlsProps) {
     return (
         <div className="pagination-controls">
             <button 
                 className={`pagination-controls__button ${currentPage === 1 ? 'pagination-controls__button--disabled' : ''}`} 
-                onClick={() => setCurrentPage(currentPage - 1)}
+                onClick={() => handlePageChange(currentPage - 1)}
             >
                 <FontAwesomeIcon icon={faChevronLeft} />
             </button>
@@ -34,7 +34,7 @@ export function PaginationControls ({ currentPage, setCurrentPage, totalPages }:
             {getPages(currentPage, totalPages).map((page) => (
                 <button 
                     key={page}
-                    onClick={() => setCurrentPage(page)}
+                    onClick={() => handlePageChange(page)}
                     className={`pagination-controls__button-page ${currentPage === page ? 'pagination-controls__button-page--active' : ''}`}
                 >
                     {page}
@@ -43,7 +43,7 @@ export function PaginationControls ({ currentPage, setCurrentPage, totalPages }:
 
             <button 
                 className={`pagination-controls__button ${currentPage === totalPages ? 'pagination-controls__button--disabled' : ''}`} 
-                onClick={() => setCurrentPage(currentPage + 1)}>
+                onClick={() => handlePageChange(currentPage + 1)}>
                 <FontAwesomeIcon icon={faChevronRight} />
             </button>
         </div>

@@ -1,9 +1,8 @@
-import type { JSX } from "react";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./AddTaskButton.css"
 
-export function AddTaskButton () : JSX.Element {
+export function AddTaskButton () {
     return (
         <button className="add-task-button" aria-label="Add task">
             <FontAwesomeIcon className="add-task-button__icon" icon={faPlus} />

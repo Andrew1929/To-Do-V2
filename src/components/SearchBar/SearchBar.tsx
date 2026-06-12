@@ -1,5 +1,3 @@
-import { type JSX } from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import "./SearchBar.css";
@@ -9,7 +7,7 @@ interface SearchBarProps {
     setSearchQuery: (query: string) => void;
 }
 
-export function SearchBar ({ searchQuery, setSearchQuery }: SearchBarProps) : JSX.Element {
+export function SearchBar ({ searchQuery, setSearchQuery }: SearchBarProps) {
     return (
         <label className="search-bar">
             <FontAwesomeIcon className="search-bar__icon" icon={faMagnifyingGlass} />

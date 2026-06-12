@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Task } from "../types/task.types";
 
-export function useSort(filteredTasks: Task[]) {
+export function useTaskFilters(filteredTasks: Task[]) {
     const [sortBy, setSortBy] = useState<string>("User ID ↑");
     const [viewBy, setViewBy] = useState<string>("All");
 

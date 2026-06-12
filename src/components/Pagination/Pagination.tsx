@@ -13,7 +13,7 @@ export function Pagination ( { setRowPerPage, currentPage, handlePageChange, tot
     return (
         <div className="pagination">
             <PageSizeSelect handlePageChange={handlePageChange} setRowPerPage={setRowPerPage} />
-            <PaginationControls currentPage={currentPage} setCurrentPage={handlePageChange} totalPages={totalPages} />
+            <PaginationControls currentPage={currentPage} handlePageChange={handlePageChange} totalPages={totalPages} />
         </div>
     )
 }
